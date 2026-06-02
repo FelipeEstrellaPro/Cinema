@@ -163,7 +163,7 @@ export default function RomancePage() {
         </h2>
         <div className="movies-grid">
           {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} accentColor="#ec4899" />
+            <MovieCard key={movie.id} movie={movie} accentColor="#dc2626" />
           ))}
         </div>
       </section>
@@ -179,7 +179,7 @@ export default function RomancePage() {
 
       <style>{`
         .romance-page {
-          background: #080410;
+          background: #0c0404;
           min-height: 100vh;
         }
 
@@ -201,7 +201,7 @@ export default function RomancePage() {
         .romance-hero-img {
           object-fit: cover;
           object-position: center;
-          filter: saturate(0.8) brightness(0.5);
+          filter: saturate(0.75) brightness(0.45);
         }
 
         .romance-hero-vignette {
@@ -209,10 +209,10 @@ export default function RomancePage() {
           inset: 0;
           background: linear-gradient(
             to bottom,
-            rgba(8,4,16,0.5) 0%,
-            rgba(100,0,60,0.2) 40%,
-            rgba(8,4,16,0.9) 70%,
-            #080410 100%
+            rgba(12,4,4,0.5) 0%,
+            rgba(120,0,0,0.2) 40%,
+            rgba(12,4,4,0.9) 70%,
+            #0c0404 100%
           );
         }
 
@@ -262,7 +262,7 @@ export default function RomancePage() {
           font-weight: 700;
           letter-spacing: 0.25em;
           text-transform: uppercase;
-          color: #ec4899;
+          color: #dc2626;
           margin-bottom: 20px;
         }
 
@@ -273,23 +273,27 @@ export default function RomancePage() {
         }
 
         .romance-title-main {
-          font-family: 'Bebas Neue', cursive;
-          font-size: clamp(5rem, 14vw, 11rem);
-          line-height: 0.85;
-          letter-spacing: 0.06em;
-          background: linear-gradient(135deg, #ffffff 0%, #ff69b4 50%, #9b1b6a 100%);
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(4rem, 11vw, 9rem);
+          line-height: 0.9;
+          letter-spacing: 0.02em;
+          font-weight: 700;
+          background: linear-gradient(135deg, #ffffff 0%, #ff4444 50%, #7f1d1d 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          filter: drop-shadow(0 0 30px rgba(236,72,153,0.4));
+          filter: drop-shadow(0 0 30px rgba(220,38,38,0.45));
         }
 
         .romance-title-sub {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(1.1rem, 2.5vw, 1.8rem);
-          font-style: italic;
-          color: #f472b6;
-          margin-top: 8px;
+          font-family: 'Inter', sans-serif;
+          font-size: clamp(1rem, 2.2vw, 1.5rem);
+          font-weight: 300;
+          font-style: normal;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: #ef4444;
+          margin-top: 12px;
         }
 
         .romance-desc {
@@ -323,7 +327,7 @@ export default function RomancePage() {
           left: 0;
           right: 0;
           height: 100px;
-          background: linear-gradient(to top, #080410, transparent);
+          background: linear-gradient(to top, #0c0404, transparent);
           z-index: 4;
           pointer-events: none;
         }
@@ -332,9 +336,9 @@ export default function RomancePage() {
         .romance-quote-banner {
           text-align: center;
           padding: 36px 32px;
-          background: linear-gradient(135deg, rgba(236,72,153,0.06) 0%, transparent 100%);
-          border-top: 1px solid rgba(236,72,153,0.12);
-          border-bottom: 1px solid rgba(236,72,153,0.12);
+          background: linear-gradient(135deg, rgba(220,38,38,0.07) 0%, transparent 100%);
+          border-top: 1px solid rgba(220,38,38,0.15);
+          border-bottom: 1px solid rgba(220,38,38,0.15);
         }
 
         .romance-quote {
@@ -348,7 +352,7 @@ export default function RomancePage() {
 
         .romance-cite {
           font-size: 0.8rem;
-          color: #ec4899;
+          color: #dc2626;
           letter-spacing: 0.1em;
         }
 
@@ -359,8 +363,8 @@ export default function RomancePage() {
           justify-content: center;
           gap: 40px;
           padding: 28px 32px;
-          background: rgba(236,72,153,0.05);
-          border-bottom: 1px solid rgba(236,72,153,0.1);
+          background: rgba(220,38,38,0.06);
+          border-bottom: 1px solid rgba(220,38,38,0.12);
         }
 
         .romance-stat {
@@ -371,9 +375,10 @@ export default function RomancePage() {
         }
 
         .romance-stat-num {
-          font-family: 'Bebas Neue', cursive;
+          font-family: 'Playfair Display', serif;
           font-size: 2rem;
-          color: #ec4899;
+          font-weight: 700;
+          color: #ef4444;
           line-height: 1;
         }
 
@@ -387,7 +392,7 @@ export default function RomancePage() {
         .romance-stat-sep {
           width: 1px;
           height: 40px;
-          background: rgba(236,72,153,0.2);
+          background: rgba(220,38,38,0.2);
         }
 
         /* MOVIES */
@@ -399,10 +404,11 @@ export default function RomancePage() {
 
         .romance-movies-title {
           margin-bottom: 40px;
-          font-family: 'Bebas Neue', cursive;
+          font-family: 'Playfair Display', serif;
           font-size: 1.8rem;
-          letter-spacing: 0.1em;
-          color: #ec4899;
+          font-weight: 700;
+          font-style: italic;
+          color: #dc2626;
           display: flex;
           align-items: center;
           gap: 16px;
@@ -412,7 +418,7 @@ export default function RomancePage() {
           content: '';
           flex: 1;
           height: 1px;
-          background: rgba(236,72,153,0.2);
+          background: rgba(220,38,38,0.2);
         }
 
         /* BOTTOM NAV */
