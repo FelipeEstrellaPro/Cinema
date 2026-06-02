@@ -1,65 +1,151 @@
 import Image from "next/image";
+import Link from "next/link";
+import { categories } from "@/app/data/movies";
+import type { Metadata } from "next";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "CineMax | Cartelera de Cine",
+  description:
+    "Explora la mejor cartelera de cine con terror, romance y comedia. CineMax te trae la experiencia cinematográfica definitiva.",
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      {/* HERO */}
+      <section className="hero-section">
+        <div className="hero-bg" />
+
+        {/* Particles */}
+        <div className="hero-particles">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="particle"
+              style={{
+                left: `${(i * 37 + 7) % 100}%`,
+                top: `${(i * 53 + 13) % 100}%`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: `${2 + (i % 3)}s`,
+                width: i % 3 === 0 ? "3px" : "2px",
+                height: i % 3 === 0 ? "3px" : "2px",
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="hero-content">
+          <div className="hero-badge animate-fade-in">
+            <span>🎬</span>
+            <span>Cartelera 2025</span>
+          </div>
+
+          <h1 className="hero-title">
+            <span className="line-1">Tu Mundo</span>
+            <span className="line-2">de Cine</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="hero-subtitle">
+            Descubre las mejores películas del año. Terror que eriza la piel,
+            romance que enamora y comedia que hace reír sin parar.
+          </p>
+
+          <div className="hero-stats">
+            <div className="stat-item">
+              <div className="stat-number">12+</div>
+              <div className="stat-label">Películas</div>
+            </div>
+            <div className="stat-divider" />
+            <div className="stat-item">
+              <div className="stat-number">3</div>
+              <div className="stat-label">Géneros</div>
+            </div>
+            <div className="stat-divider" />
+            <div className="stat-item">
+              <div className="stat-number">4K</div>
+              <div className="stat-label">Calidad</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CATEGORY CARDS */}
+      <section className="cards-section">
+        <div className="section-header">
+          <h2 className="section-title">ELIGE TU GÉNERO</h2>
+          <p className="section-subtitle">
+            Tres mundos cinematográficos únicos te esperan
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="cards-grid">
+          {categories.map((cat, idx) => (
+            <Link
+              key={cat.slug}
+              href={`/${cat.slug}`}
+              className="category-card animate-fade-in-up"
+              style={{ animationDelay: `${idx * 0.15}s` }}
+            >
+              {/* Image */}
+              <div className="card-image-wrapper">
+                <Image
+                  src={cat.image}
+                  alt={cat.label}
+                  fill
+                  className="card-image"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  priority={idx === 0}
+                />
+                <div className="card-overlay" />
+                <div
+                  className="card-badge-top"
+                  style={{ color: cat.accentColor }}
+                >
+                  <span>{cat.icon}</span>
+                  <span style={{ fontSize: "0.7rem", letterSpacing: "0.12em" }}>
+                    {cat.label.toUpperCase()}
+                  </span>
+                </div>
+                <div className="card-movie-count">
+                  {cat.movies.length} películas
+                </div>
+              </div>
+
+              {/* Body */}
+              <div className="card-body">
+                <div
+                  className="card-accent-line"
+                  style={{
+                    background: `linear-gradient(90deg, ${cat.accentColor}, transparent)`,
+                  }}
+                />
+                <span className="card-icon">{cat.icon}</span>
+                <h3 className="card-title">{cat.label}</h3>
+                <p
+                  className="card-tagline"
+                  style={{ color: cat.accentColor }}
+                >
+                  {cat.tagline}
+                </p>
+                <p className="card-description">{cat.description}</p>
+
+                <div className="card-footer">
+                  <span
+                    className="card-explore-btn"
+                    style={{ color: cat.accentColor }}
+                  >
+                    Explorar
+                    <span className="card-arrow">→</span>
+                  </span>
+                  <span style={{ color: "var(--text-secondary)", fontSize: "0.8rem" }}>
+                    ⭐ Ver todo
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
