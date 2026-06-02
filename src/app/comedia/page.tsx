@@ -60,6 +60,141 @@ const movies = [
   },
 ];
 
+const recomendaciones = [
+  {
+    id: 101,
+    title: "Locura en Las Vegas",
+    description: "Dos desconocidos se despiertan casados y con un premio millonario. Ahora deben convivir para reclamar el dinero.",
+    rating: 6.8,
+    duration: "1h 39min",
+    year: 2008,
+    director: "Tom Vaughan",
+    cast: ["Cameron Diaz", "Ashton Kutcher", "Rob Corddry"],
+    badge: "RECOMENDADA",
+  },
+  {
+    id: 102,
+    title: "Superfumados",
+    description: "Un perezoso y su proveedor de marihuana deben huir tras presenciar un crimen cometido por policías corruptos.",
+    rating: 7.0,
+    duration: "1h 51min",
+    year: 2008,
+    director: "David Gordon Green",
+    cast: ["Seth Rogen", "James Franco", "Gary Cole"],
+  },
+  {
+    id: 103,
+    title: "Guerra de Papás",
+    description: "Un padrastro amable se enfrenta al padre biológico, un tipo duro y rebelde, por el afecto de los niños.",
+    rating: 6.1,
+    duration: "1h 36min",
+    year: 2015,
+    director: "Sean Anders",
+    cast: ["Will Ferrell", "Mark Wahlberg", "Linda Cardellini"],
+  },
+  {
+    id: 104,
+    title: "Proyecto X",
+    description: "Tres estudiantes de preparatoria deciden organizar una fiesta para hacerse populares, pero la situación se sale de control.",
+    rating: 6.7,
+    duration: "1h 28min",
+    year: 2012,
+    director: "Nima Nourizadeh",
+    cast: ["Thomas Mann", "Oliver Cooper", "Jonathan Daniel Brown"],
+    badge: "CLÁSICO",
+  },
+];
+
+const topMexico = [
+  {
+    id: 201,
+    title: "Nosotros los Nobles",
+    description: "Un empresario finge la bancarrota para darles una lección a sus tres hijos malcriados y obligarlos a trabajar.",
+    rating: 7.1,
+    duration: "1h 48min",
+    year: 2013,
+    director: "Gary Alazraki",
+    cast: ["Gonzalo Vega", "Karla Souza", "Luis Gerardo Méndez"],
+    badge: "#1 HOY",
+  },
+  {
+    id: 202,
+    title: "Mirreyes contra Godínez",
+    description: "Un grupo de 'mirreyes' y otro de 'godínez' se enfrentan en la oficina tras la muerte del dueño de la empresa.",
+    rating: 6.5,
+    duration: "1h 49min",
+    year: 2019,
+    director: "Chava Cartas",
+    cast: ["Pablo Lyle", "Daniel Tovar", "Regina Blandón"],
+    badge: "POPULAR",
+  },
+  {
+    id: 203,
+    title: "No se aceptan devoluciones",
+    description: "Un hombre soltero en Acapulco debe criar a una hija que le dejan de sorpresa en la puerta de su casa.",
+    rating: 7.5,
+    duration: "2h 2min",
+    year: 2013,
+    director: "Eugenio Derbez",
+    cast: ["Eugenio Derbez", "Loreto Peralta", "Jessica Lindsey"],
+  },
+  {
+    id: 204,
+    title: "Hazlo como hombre",
+    description: "Raúl, un machista, intenta 'curar' a su mejor amigo cuando este le confiesa que es gay.",
+    rating: 5.5,
+    duration: "1h 49min",
+    year: 2017,
+    director: "Nicolás López",
+    cast: ["Mauricio Ochmann", "Alfonso Dosal", "Aislinn Derbez"],
+  },
+];
+
+const mismoGenero = [
+  {
+    id: 301,
+    title: "Son como niños",
+    description: "Cinco amigos de la infancia se reúnen un fin de semana del Día de la Independencia tras el fallecimiento de su entrenador.",
+    rating: 5.9,
+    duration: "1h 42min",
+    year: 2010,
+    director: "Dennis Dugan",
+    cast: ["Adam Sandler", "Kevin James", "Chris Rock"],
+  },
+  {
+    id: 302,
+    title: "Scary Movie",
+    description: "Un grupo de adolescentes ineptos es perseguido por un asesino en serie despistado en esta parodia de películas de terror.",
+    rating: 6.3,
+    duration: "1h 28min",
+    year: 2000,
+    director: "Keenen Ivory Wayans",
+    cast: ["Anna Faris", "Jon Abrahams", "Marlon Wayans"],
+  },
+  {
+    id: 303,
+    title: "Chicas Pesadas",
+    description: "Una joven que estudiaba en casa entra a la escuela secundaria y se infiltra en el grupo de las chicas populares.",
+    rating: 7.1,
+    duration: "1h 37min",
+    year: 2004,
+    director: "Mark Waters",
+    cast: ["Lindsay Lohan", "Rachel McAdams", "Tina Fey"],
+    badge: "CULTO",
+  },
+  {
+    id: 304,
+    title: "¿Qué pasó ayer?",
+    description: "Tres amigos despiertan tras una despedida de soltero en Las Vegas sin recordar nada y el novio ha desaparecido.",
+    rating: 7.7,
+    duration: "1h 40min",
+    year: 2009,
+    director: "Todd Phillips",
+    cast: ["Bradley Cooper", "Ed Helms", "Zach Galifianakis"],
+    badge: "ÉXITO",
+  },
+];
+
 export default function ComediaPage() {
   return (
     <div className="comedia-page">
@@ -174,6 +309,36 @@ export default function ComediaPage() {
         <h2 className="comedia-movies-title">🎭 EN CARTELERA</h2>
         <div className="movies-grid">
           {movies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} accentColor="#f59e0b" />
+          ))}
+        </div>
+      </section>
+
+      {/* ── RECOMENDACIONES ── */}
+      <section className="comedia-movies-section section-padding-reduced">
+        <h2 className="comedia-movies-title">⭐ RECOMENDACIONES</h2>
+        <div className="movies-grid">
+          {recomendaciones.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} accentColor="#f59e0b" />
+          ))}
+        </div>
+      </section>
+
+      {/* ── TOP MEXICO ── */}
+      <section className="comedia-movies-section section-padding-reduced">
+        <h2 className="comedia-movies-title">🇲🇽 TOP MEXICO</h2>
+        <div className="movies-grid">
+          {topMexico.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} accentColor="#f59e0b" />
+          ))}
+        </div>
+      </section>
+
+      {/* ── MISMO GÉNERO ── */}
+      <section className="comedia-movies-section section-padding-reduced">
+        <h2 className="comedia-movies-title">🎬 PELÍCULAS DEL MISMO GÉNERO</h2>
+        <div className="movies-grid">
+          {mismoGenero.map((movie) => (
             <MovieCard key={movie.id} movie={movie} accentColor="#f59e0b" />
           ))}
         </div>
@@ -412,6 +577,10 @@ export default function ComediaPage() {
           max-width: 1300px;
           margin: 0 auto;
           padding: 64px 48px 80px;
+        }
+
+        .section-padding-reduced {
+          padding-top: 0px;
         }
 
         .comedia-movies-title {
